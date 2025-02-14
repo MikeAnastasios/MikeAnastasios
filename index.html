@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aether Agent Profile: Greg Mueller - Tech & Business Solutions Expert</title>
+    <title>Mikhail Mavromatis - Frontend Developer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -11,55 +11,74 @@
             color: #333;
             background-color: #f8f9fa;
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .agent-profile {
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 1em;
+        }
+        .profile-container {
+            display: flex;
             background-color: #fff;
+            flex-direction: column;
+            align-items: flex-start;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            gap: 0.5em;
+            transition: background-color 0.3s;
         }
-        .agent-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
+        .title-with-mode {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .info-container {
+            display: flex;
+            background-color: #fff;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            gap: 1em;
+            transition: background-color 0.3s;
         }
         h1, h2, h3 {
-            color: #0056b3; /* Primary color for headings */
+            color: #0056b3;
+            margin: 0;
         }
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
+            margin: 0;
         }
         h2 {
             font-size: 1.8em;
-            margin-top: 25px;
-            margin-bottom: 15px;
             border-bottom: 2px solid #eee;
             padding-bottom: 5px;
+            margin: 0;
         }
-        h3 {
-            font-size: 1.4em;
-            margin-top: 15px;
-            margin-bottom: 10px;
+        p {
+            margin: 0;
         }
-        .expertise-list {
+        .contact-info, .skills-list, .experience-list {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.2em;
             list-style: none;
             padding-left: 0;
+            margin: 0;
         }
-        .expertise-list li {
-            margin-bottom: 10px;
-        }
-        .expertise-list li strong {
-            display: block;
-            font-weight: bold;
-            color: #007bff; /* Accent color for expertise areas */
-        }
-        .expertise-list li p {
-            margin-top: 5px;
-            color: #666;
+        .contact-info li, .skills-list li, .experience-list li {
+            margin: 0;
         }
         .button-link {
             display: inline-block;
@@ -68,76 +87,176 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 20px;
         }
         .button-link:hover {
             background-color: #0056b3;
-        }
-        .portfolio-link {
-            color: #007bff;
+            color: #fff;
             text-decoration: none;
         }
-        .portfolio-link:hover {
-            text-decoration: underline;
+
+        /* Dark Mode */
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2px 3px 2px 6px;
+            gap: 0.3em;
+        }
+        .theme-switch img {
+            width: 42px;
+            height: 42px;
+        }
+        .dark-mode .theme-switch {
+            background: #1e1e1e;
+            box-shadow: 0 0 10px rgb(0 0 0 / 56%);
+        }
+        .theme-switch svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .dark-mode .theme-switch svg {
+            transform: rotate(180deg);
+        }
+        .dark-mode .profile-container,
+        .dark-mode .info-container {
+            background-color: #1e1e1e;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+            color: #66aaff;
+        }
+        .theme-toggle {
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0;
+            transition: background-color 0.3s;
+        }
+        .theme-toggle:hover {
+            background-color: #0056b3;
+        }
+        .theme-label {
+            font-size: 1rem;
+            color: #0081fa;
+            transition: color 0.3s;
+        }
+        .dark-mode .theme-label {
+            color: #f8f9fa;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="agent-profile">
-            <div class="text-center">
-                
-                <h1>Greg Mueller</h1>
-                <p class="lead">Your Versatile Aether Agent for Tech & Business Growth</p>
+        <div class="profile-container">
+            <div class="title-with-mode">
+                <h1>Mikhail Mavromatis</h1>
+                <div class="theme-switch" onclick="toggleTheme()">
+                    <span id="theme-text" class="theme-label">Light Mode</span>
+                    <img id="theme-icon" src="https://img.icons8.com/?size=100&id=HoVeF9AUCAog&format=png&color=000000" alt="Sun">
+                </div>
             </div>
-
-            <h2>About Me</h2>
-            <p>Hello! I'm Greg Mueller, a highly versatile Aether Agent specializing in a broad spectrum of technical and business support services. With a passion for leveraging cutting-edge AI and a deep understanding of business operations, I'm here to help your organization optimize processes, enhance your online presence, and streamline your administrative tasks.</p>
-            <p>My unique skill set allows me to provide comprehensive solutions, from ensuring robust network infrastructure and developing engaging websites to optimizing server performance, driving business development, and even creating compelling video and photo content.  I am committed to delivering efficient, high-quality results tailored to your specific needs, all powered by the intelligence of Aether Agents.</p>
-
-            <h2>Areas of Expertise</h2>
-            <ul class="expertise-list">
-                <li>
-                    <strong>Networking Engineering:</strong>
-                    <p>Design, implement, and maintain robust and secure network infrastructures tailored to your business needs.  Optimize network performance, troubleshoot connectivity issues, and ensure seamless data flow for your operations. Let me handle the complexities of networking so you can focus on your core business.</p>
-                </li>
-                <li>
-                    <strong>Website Development:</strong>
-                    <p>Create dynamic, user-friendly, and visually appealing websites that effectively represent your brand and achieve your online goals.  From initial design to deployment and maintenance, I can build websites that engage your audience and drive results, leveraging the latest web technologies.</p>
-                </li>
-                <li>
-                    <strong>Server Administration:</strong>
-                    <p>Ensure your servers are running smoothly, securely, and efficiently.  I can manage server setup, maintenance, security updates, and performance optimization, minimizing downtime and maximizing reliability for your critical online services and applications.</p>
-                </li>
-                <li>
-                    <strong>Business Development:</strong>
-                    <p>Drive business growth through strategic planning, market analysis, and lead generation support. I can assist with developing business strategies, identifying new opportunities, and creating compelling content to attract and engage potential clients, leveraging AI-driven insights.</p>
-                </li>
-                <li>
-                    <strong>Application Training:</strong>
-                    <p>Develop and deliver engaging and effective training programs for your team on new software applications and technologies.  Ensure smooth user adoption and maximize your team's productivity with tailored training materials and support, utilizing AI to personalize learning experiences.</p>
-                </li>
-                <li>
-                    <strong>Video and Photo Editing:</strong>
-                    <p>Create visually stunning and impactful video and photo content for your marketing, training, or internal communications.  From editing raw footage to enhancing images and adding professional touches, I can help you create media that captures attention and communicates your message effectively.</p>
-                </li>
-                <li>
-                    <strong>Administrative Support:</strong>
-                    <p>Streamline your administrative tasks and free up your valuable time.  I can assist with tasks such as scheduling, email management, data entry, report generation, and document preparation, utilizing AI to automate routine processes and improve efficiency.</p>
-                </li>
-                <li>
-                    <strong>Process Development:</strong>
-                    <p>Analyze and optimize your business processes to improve efficiency and reduce operational costs.  I can help you identify bottlenecks, streamline workflows, and implement process improvements, leveraging AI-powered process analysis and optimization tools.</p>
-                </li>
+            <p class="lead">Frontend Developer</p>
+            <ul class="contact-info">
+                <li>📍 Odesa, Ukraine</li>
+                <li>📧 <a href="mailto:mihailmavromatis@gmail.com">mihailmavromatis@gmail.com</a></li>
+                <!-- <li>📞 <a href="tel:+380992124512">+38(099)212-45-12</a></li> -->
+                <li>🔗 <a href="http://linkedin.com/in/mikhail-mavromatis-11bb80128/" target="_blank">LinkedIn</a></li>
+                <li>🔗 <a href="https://github.com/MikeAnastasios" target="_blank">GitHub</a></li>
             </ul>
+        </div>
 
-            <p><strong>Ready to discuss how I can assist your business?</strong> <a href="mailto:[Greg@gregm.ca]" class="button-link">Contact Me Through Aether Agents</a></p>
+        <div class="info-container">
+            <h2>About Me</h2>
+            <p>Extremely motivated to constantly develop my skills and grow professionally. Capable of working under pressure, multitasking, and collaborating efficiently.</p>
+        </div>
 
-            <hr>
-            <p><a href="https://dartans.github.io/" class="portfolio-link" target="_blank">View My Portfolio</a></p>
-            <p><em>Profile hosted via GitHub Pages for Aether Agents.</em></p>
+        <div class="info-container">
+            <h2>Education</h2>
+            <ul>
+                <li>Odessa National Medical University (2012-2020)</li>
+                <li>ITVDN - HTML/CSS & JavaScript (Feb-May 2021)</li>
+                <li>ItGid - JavaScript (May-Aug 2021) (Certificate)</li>
+                <li>Udemy - The Complete JavaScript Course (May-Jul 2022)</li>
+                <li>Udemy - Vue JS & Vuex Project Development (Mar-May 2023) (Certificate)</li>
+            </ul>
+        </div>
+
+        <div class="info-container">
+            <h2>Work Experience</h2>
+            <ul class="experience-list">
+                <li><strong>Astin IT</strong> - Trainee/Junior Frontend Developer (Feb 2021 - Sep 2021) <br> Developed projects, ensured cross-browser compatibility, mobile-first responsive layout, worked with Figma designs.</li>
+                <li><strong>Freelance</strong> - Junior Frontend Developer (Mar 2022 - Dec 2023) <br> Worked on pet projects using JavaScript and React, contributed to freelance projects with JavaScript, jQuery, and Bootstrap.</li>
+                <li><strong>CQR Company</strong> - Frontend Developer (Jan 2023 - Present) <br> Developed and maintained projects using WordPress, PHP, VueJS, Vuex, and VueRouter.</li>
+            </ul>
+        </div>
+
+        <div class="info-container">
+            <h2>Technical Skills</h2>
+            <ul class="skills-list">
+                <li>HTML5, CSS3, SASS/SCSS, Bootstrap 4/5, Bootstrap-Vue, PrimeVue</li>
+                <li>JavaScript (ES6+), AJAX, Web API, jQuery</li>
+                <li>VueJS (2.0, 3.0), Vuex, VueRouter, basic React</li>
+                <li>WordPress, PHP, MySQL (ACF, FacetWP, WP Imp Exp)</li>
+                <li>GitHub, Jira</li>
+                <li>Adobe Photoshop, Figma, Canva</li>
+                <li>SQL Server, SSMS</li>
+                <li>Agile, Scrum</li>
+            </ul>
+        </div>
+
+        <div class="info-container">
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Exceptional communication and networking</li>
+                <li>Strong teamwork and independent working skills</li>
+                <li>Ability to work under pressure and multi-task</li>
+                <li>Time management and adaptability</li>
+            </ul>
+        </div>
+
+        <div class="info-container">
+            <h2>Languages</h2>
+            <ul>
+                <li>Russian, Ukrainian - Native</li>
+                <li>English - B1/B2</li>
+                <li>Greek - A2</li>
+            </ul>
+        </div>
+
+        <div class="info-container text-center">
+            <p><strong>Let's connect!</strong></p>
+            <a href="mailto:mihailmavromatis@gmail.com" class="button-link">Contact Me</a>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/
+    <script>
+function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            const icon = document.getElementById("theme-icon");
+            const themeText = document.getElementById("theme-text");
+            if (document.body.classList.contains("dark-mode")) {
+                icon.src = "https://img.icons8.com/?size=100&id=62034&format=png&color=000000"; 
+                icon.alt = "Moon";
+                themeText.textContent = "Dark Mode";
+            } else {
+                icon.src = "https://img.icons8.com/?size=100&id=HoVeF9AUCAog&format=png&color=000000"; 
+                icon.alt = "Sun";
+                themeText.textContent = "Light Mode";
+            }
+        }
+    </script>
+</body>
+</html>
